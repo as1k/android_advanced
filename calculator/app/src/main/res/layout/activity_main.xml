@@ -16,10 +16,10 @@
             style="@style/Margin16dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginTop="32dp"
             android:background="@drawable/bg_classes_round"
             android:orientation="vertical"
-            android:layout_gravity="center"
             android:paddingHorizontal="16dp"
             android:paddingVertical="24dp">
 
@@ -224,8 +224,8 @@
                 android:layout_height="wrap_content"
                 android:divider="@drawable/white_divider"
                 android:orientation="horizontal"
-                android:weightSum="100"
-                android:showDividers="middle">
+                android:showDividers="middle"
+                android:weightSum="100">
 
                 <Button
                     android:id="@+id/_0"
@@ -241,11 +241,24 @@
                     android:textSize="16sp" />
 
                 <Button
+                    android:id="@+id/clear"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_weight="25"
+                    android:background="@drawable/btn_bg"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="@string/clear"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+
+                <Button
                     android:id="@+id/equals"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:layout_weight="50"
+                    android:layout_weight="25"
                     android:background="@drawable/btn_bg"
                     android:fontFamily="sans-serif-medium"
                     android:text="@string/equals"

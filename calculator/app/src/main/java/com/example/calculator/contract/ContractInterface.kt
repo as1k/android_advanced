@@ -13,7 +13,7 @@ interface ContractInterface {
     }
 
     interface Model {
-        fun getAnswer(): String
+        fun getAnswer(): Int
         fun plus(digitOne: Int, digitTwo: Int)
         fun minus(digitOne: Int, digitTwo: Int)
         fun multiply(digitOne: Int, digitTwo: Int)

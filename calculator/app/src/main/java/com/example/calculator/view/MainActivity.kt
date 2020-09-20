@@ -1,9 +1,10 @@
 package com.example.calculator.view
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import androidx.appcompat.app.AppCompatActivity
 import com.example.calculator.R
 import com.example.calculator.contract.ContractInterface.View
 import com.example.calculator.presenter.MainActivityPresenter
@@ -31,6 +32,7 @@ class MainActivity : AppCompatActivity(), View {
     private lateinit var multiply: Button
     private lateinit var divide: Button
     private lateinit var equals: Button
+    private lateinit var clear: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,6 +59,7 @@ class MainActivity : AppCompatActivity(), View {
         multiply = findViewById(R.id.multiply)
         divide = findViewById(R.id.divide)
         equals = findViewById(R.id.equals)
+        clear = findViewById(R.id.clear)
 
         _9.setOnClickListener {
             if (editText.text.toString() == getString(R.string.zero)) editText.setText(getString(R.string.nine))
@@ -111,47 +114,59 @@ class MainActivity : AppCompatActivity(), View {
         plus.setOnClickListener {
             if (editText.text.isNotEmpty()) {
                 valueOne = editText.text.toString().toInt()
-                operation = "+"
-                editText.setText("")
-            }
+            } else valueOne = 0
+            operation = "+"
+            editText.setText("")
         }
 
         minus.setOnClickListener {
             if (editText.text.isNotEmpty()) {
                 valueOne = editText.text.toString().toInt()
-                operation = "-"
-                editText.setText("")
-            }
+            } else valueOne = 0
+            operation = "-"
+            editText.setText("")
         }
 
         multiply.setOnClickListener {
             if (editText.text.isNotEmpty()) {
                 valueOne = editText.text.toString().toInt()
-                operation = "*"
-                editText.setText("")
-            }
+            } else valueOne = 0
+            operation = "*"
+            editText.setText("")
         }
 
         divide.setOnClickListener {
             if (editText.text.isNotEmpty()) {
                 valueOne = editText.text.toString().toInt()
-                operation = "/"
-                editText.setText("")
-            }
+            } else valueOne = 0
+            operation = "/"
+            editText.setText("")
         }
 
         equals.setOnClickListener {
             if (editText.text.isNotEmpty()) {
                 valueTwo = editText.text.toString().toInt()
-                presenter?.doOperation(valueOne, valueTwo, operation)
+            } else valueTwo = 0
+            presenter?.doOperation(valueOne, valueTwo, operation)
+
+        }
+        clear.setOnClickListener {
+            if (editText.text.isNotEmpty()) {
+                val text = editText.text.toString()
+                editText.setText(text.substring(0, text.length - 1))
             }
         }
-        showAnswer()
+        clear.setOnLongClickListener {
+            if (editText.text.isNotEmpty()) {
+                editText.setText("")
+            }
+            true
+        }
+        editText.setText(getString(R.string.zero))
     }
 
     override fun showAnswer() {
-        val info = presenter?.getAnswer()
-        editText.setText(info)
+        editText.setText(presenter?.getAnswer())
     }
 
     companion object {

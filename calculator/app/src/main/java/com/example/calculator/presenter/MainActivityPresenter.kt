@@ -20,6 +20,8 @@ class MainActivityPresenter(_view: View) : Presenter {
         view.showAnswer()
     }
 
-    override fun getAnswer(): String = model.getAnswer()
+    override fun getAnswer(): String {
+        return model.getAnswer().toString()
+    }
 
 }

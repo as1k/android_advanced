@@ -6,7 +6,7 @@ class MainActivityModel : Model {
 
     private var answer = 0
 
-    override fun getAnswer() = answer.toString()
+    override fun getAnswer() = answer
 
     override fun plus(digitOne: Int, digitTwo: Int) {
         answer = digitOne + digitTwo
