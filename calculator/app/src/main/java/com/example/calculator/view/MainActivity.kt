@@ -151,15 +151,15 @@ class MainActivity : AppCompatActivity(), View {
 
         }
         clear.setOnClickListener {
-            if (editText.text.isNotEmpty()) {
+            if (editText.text.length == 1 || editText.text.isEmpty()) {
+                editText.setText(getString(R.string.zero))
+            } else {
                 val text = editText.text.toString()
                 editText.setText(text.substring(0, text.length - 1))
             }
         }
         clear.setOnLongClickListener {
-            if (editText.text.isNotEmpty()) {
-                editText.setText("")
-            }
+            if (editText.text.toString() != getString(R.string.zero)) editText.setText(getString(R.string.zero))
             true
         }
         editText.setText(getString(R.string.zero))
