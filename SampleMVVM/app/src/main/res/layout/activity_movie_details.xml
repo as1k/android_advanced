@@ -12,20 +12,12 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/appColor">
+        android:background="@color/colorPrimary"
+        android:paddingHorizontal="16dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
-            <ProgressBar
-                android:id="@+id/progressBar"
-                style="?android:attr/progressBarStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/mainLayout"
@@ -36,68 +28,42 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <androidx.appcompat.widget.Toolbar
-                    android:id="@+id/toolbar"
+                <TextView
+                    android:id="@+id/tvBack"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:background="?attr/colorPrimary"
-                    android:minHeight="?attr/actionBarSize"
-                    android:theme="?attr/actionBarTheme"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Back"
+                    android:textColor="@android:color/white"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <TextView
-                        android:id="@+id/tvBack"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="&#10096;News"
-                        android:textAlignment="center"
-                        android:textColor="@android:color/white"
-                        tools:layout_editor_absoluteX="16dp"
-                        tools:layout_editor_absoluteY="10dp" />
-
-                    <TextView
-                        android:id="@+id/tvToolbarTitile"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:autoSizeTextType="uniform"
-                        android:gravity="center"
-                        android:paddingLeft="20dp"
-                        android:textAlignment="viewStart"
-                        android:textColor="@android:color/white"
-                        android:textStyle="bold"
-                        tools:layout_editor_absoluteX="58dp"
-                        tools:layout_editor_absoluteY="10dp"
-                        android:text="@{movie.title}" />
-                </androidx.appcompat.widget.Toolbar>
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
                     android:id="@+id/ivBanner"
                     android:layout_width="match_parent"
-                    android:layout_height="300dp"
-                    android:scaleType="fitXY"
+                    android:layout_height="200dp"
+                    android:layout_marginTop="32dp"
+                    android:scaleType="centerCrop"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/toolbar"
+                    app:layout_constraintTop_toBottomOf="@+id/tvBack"
                     tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
                 <TextView
                     android:id="@+id/tvRating"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
                     android:background="@drawable/rounded_corners"
                     android:gravity="center"
+                    android:text="@{String.valueOf(movie.voteCount)}"
                     android:textAlignment="center"
                     android:textColor="@android:color/black"
                     android:textSize="20sp"
                     android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="@+id/ivBanner"
-                    app:layout_constraintTop_toBottomOf="@+id/toolbar"
-                    android:text="@{movie.voteCount}" />
+                    app:layout_constraintBottom_toBottomOf="@+id/ivBanner"
+                    app:layout_constraintEnd_toEndOf="parent" />
 
 
                 <TextView
@@ -109,12 +75,12 @@
                     android:autoSizeTextType="uniform"
                     android:background="@android:color/white"
                     android:maxWidth="300dp"
+                    android:text="@{String.valueOf(movie.title)}"
                     android:textColor="@android:color/black"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="@id/ivBanner"
-                    app:layout_constraintStart_toStartOf="@id/ivBanner"
-                    android:text="@{movie.title}" />
+                    app:layout_constraintStart_toStartOf="@id/ivBanner" />
 
                 <TextView
                     android:id="@+id/tvReleaseDate"
@@ -123,35 +89,35 @@
                     android:layout_marginTop="16dp"
                     android:autoSizeTextType="uniform"
                     android:background="@android:color/white"
+                    android:text="@{String.valueOf(movie.releaseDate)}"
                     android:textColor="@android:color/black"
                     android:textSize="14sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="@+id/tvTitle"
-                    app:layout_constraintTop_toBottomOf="@+id/tvTitle"
-                    android:text="@{movie.releaseDate}" />
+                    app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
 
                 <TextView
                     android:id="@+id/tvPlot"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="8dp"
+                    android:text="@{String.valueOf(movie.overview)}"
                     android:textColor="@android:color/white"
                     android:textSize="18sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/ivBanner"
-                    android:text="@{movie.overview}" />
+                    app:layout_constraintTop_toBottomOf="@+id/ivBanner" />
 
                 <TextView
                     android:id="@+id/tvDuration"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
+                    android:text="Duration:"
                     android:textColor="@android:color/white"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="@+id/tvPlot"
-                    app:layout_constraintTop_toBottomOf="@id/tvPlot"
-                    android:text="Duration:" />
+                    app:layout_constraintTop_toBottomOf="@id/tvPlot" />
 
                 <TextView
                     android:id="@+id/tvBudget"
@@ -159,11 +125,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
+                    android:text="Budget:"
                     android:textColor="@android:color/white"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="@+id/tvDuration"
-                    app:layout_constraintTop_toBottomOf="@id/tvDuration"
-                    android:text="Budget:" />
+                    app:layout_constraintTop_toBottomOf="@id/tvDuration" />
 
                 <TextView
                     android:id="@+id/tvRevenue"
@@ -171,13 +137,23 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
+                    android:text="Revenue:"
                     android:textColor="@android:color/white"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="@id/tvBudget"
-                    app:layout_constraintTop_toBottomOf="@id/tvBudget"
-                    android:text="Revenue:" />
+                    app:layout_constraintTop_toBottomOf="@id/tvBudget" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </layout>
